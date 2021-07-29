@@ -1,54 +1,29 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-
-
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-
-
-
 <style lang="scss">
+@import "../node_modules/reset-css/reset.css";
+
 @font-face {
-  font-family: 'Rotonda C';
-  src: url('./assets/fonts/ofont.ru_Rotonda.ttf');
+  font-family: "Rotonda C";
+  src: url("./assets/fonts/RotondaC.woff");
+}
+
+html {
+  overflow-x: hidden;
 }
 body {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+  position: relative;
+  overflow-x: hidden;
 }
 
 #app {
-   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  background: #E5E5E5;
-
-  font-family: 'Rotonda C';
-  // font-size: 36px;
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Rotonda C";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
-
-// #nav {
-//   padding: 30px;
-
-//   a {
-//     font-weight: bold;
-//     color: #2c3e50;
-
-//     &.router-link-exact-active {
-//       color: #42b983;
-//     }
-//   }
-// }
 </style>

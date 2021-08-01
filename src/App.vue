@@ -21,7 +21,7 @@ body {
 }
 
 #app {
-  font-family: "Rotonda C";
+  font-family: "Rotonda C", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

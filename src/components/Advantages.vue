@@ -1,14 +1,12 @@
 <template>
   <div class="advantages">
-    <h1 class="advanatges__heading">Преимущества</h1>
+    <h1 class="advantages__heading">Преимущества даркстора</h1>
     <div class="advantages__wrapper">
-      <div class="tile" v-for="item in advantagesTiles" :key="item.id">
-        <div class="img__wrapper">
-          <img :src="item.tileImg" :alt="item.tileHeading" class="tile__img" />
-        </div>
-        <p class="tile__heading">{{ item.tileHeading }}</p>
-        <p class="tile__text">{{ item.tileText }}</p>
-      </div>
+      <AdvantageCard
+        v-for="(tile, index) in advantagesTiles"
+        :key="index"
+        :tile="tile"
+      />
     </div>
   </div>
 </template>
@@ -21,8 +19,12 @@ import tile4 from "../assets/img/tile4.png";
 import tile5 from "../assets/img/tile5.png";
 import tile6 from "../assets/img/tile6.png";
 
+import AdvantageCard from "./AdvantageCard.vue";
 export default {
   name: "Advantages",
+  components: {
+    AdvantageCard,
+  },
   data() {
     return {
       advantagesTiles: [
@@ -67,17 +69,21 @@ export default {
   },
   mounted() {
     const headings = document.querySelectorAll(".tile__heading");
-    [...headings][1].style.marginBottom = "55px";
+
+    if (document.documentElement.clientWidth === 320) {
+      [...headings][1].style.marginBottom = "15px";
+    } else {
+      [...headings][1].style.marginBottom = "55px";
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .advantages {
-  border: 2px solid pink;
   margin-bottom: 100px;
 }
-.advanatges__heading {
+.advantages__heading {
   font-weight: 700;
   line-height: 60px;
   font-size: 36px;
@@ -86,30 +92,57 @@ export default {
 }
 .advantages__wrapper {
   margin: 0px auto;
-  max-width: 945px;
+  max-width: 915px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.tile {
-  width: 285px;
-  padding: 28px 22px 20px;
-  margin-bottom: 30px;
-  margin-right: 30px;
-  border-radius: 10px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  line-height: 24px;
+@media only screen and (max-width: 1024px) {
+  .advantages {
+    margin-bottom: 43px;
+  }
 }
-.img__wrapper {
-  height: 90px;
-  margin-bottom: 30px;
+
+@media only screen and (max-width: 940px) {
+  .advantages__wrapper {
+    padding: 0px 125px;
+  }
 }
-.tile__heading {
-  font-weight: bold;
-  margin-bottom: 30px;
+
+@media only screen and (max-width: 910px) {
+  .advantages__wrapper {
+    padding: 0px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .advantages__heading {
+    font-size: 36px;
+    line-height: 32px;
+    max-width: 250px;
+    margin: 0px auto;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .advantages__heading {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .advantages {
+    margin-bottom: 50px;
+  }
+  .advantages__heading {
+    font-size: 26px;
+    line-height: 32px;
+    max-width: 185px;
+    margin: 0px auto;
+    margin-bottom: 24px;
+  }
 }
 </style>

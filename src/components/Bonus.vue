@@ -8,8 +8,10 @@
           class="card__icon"
         />
         <div class="card__description">
-          <p class="card__heading top">Скидка</p>
-          <p class="card__heading green">1500 ₽</p>
+          <div class="card__headings">
+            <p class="card__heading top">Скидка&nbsp;</p>
+            <p class="card__heading green">1500 ₽</p>
+          </div>
           <p class="card-text">
             <span>–500 ₽</span> на первые три заказа<br />
             по промокоду NEW
@@ -33,89 +35,35 @@
       </div>
     </div>
     <button class="bonus__purchase" @click="showPopup">К покупкам</button>
-
-    <div class="popup" @click.self="hidePopup">
-      <div class="popup__content">
-        <div class="popup__close">
-          <img src="../assets/img/close.png" alt="" @click.self="hidePopup" />
-        </div>
-        <form id="form" name="email-form" @submit.prevent="sendForm">
-          <input
-            @input="validateForm"
-            class="form__email"
-            type="email"
-            placeholder="Введите email"
-            name="email-address"
-            id="email"
-            required
-          />
-          <button class="form__button" type="submit">Отправить</button>
-        </form>
-      </div>
-    </div>
+    <Modal />
   </section>
 </template>
 
 <script>
+import Modal from "./Modal.vue";
 export default {
   name: "Bonus",
   data() {
     return {};
   },
   methods: {
-    validateForm(event) {
-      const target = event.target;
-      target.value = target.value
-        .replace(/[^a-z0-9@s\-_.!~*']/gi, "")
-        .replace(/-+/g, "-")
-        .replace(/\.+/g, ".");
-    },
     showPopup() {
-      const popup = document.querySelector(".popup");
+      const popup = document.getElementById("main");
       popup.style.display = "block";
     },
-    hidePopup() {
-      const popup = document.querySelector(".popup");
-      popup.style.display = "";
-    },
-    sendForm(event) {
-      const formData = new FormData(event.target);
-      const body = {};
-      for (const value of formData.entries()) {
-        body[value[0]] = value[1];
-      }
-
-      fetch("адрес__сервера", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
-        .then((response) => {
-          if (response.status !== 200) {
-            throw new Error("network failed");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("отправленные данные: ", data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      event.target.reset();
-    },
+  },
+  components: {
+    Modal,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .bonus {
-  border: 2px solid red;
   padding-top: 60px;
   background-color: white;
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 .bonus__сards {
@@ -181,59 +129,84 @@ export default {
   border: none;
 }
 
-//стили попапа
-.popup {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-.popup__content {
-  position: fixed;
-  top: 32%;
-  left: 37%;
-  background-color: white;
-  border-radius: 10px;
-  width: 500px;
-  padding: 20px;
-}
-.popup__close {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 15px;
-  img {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
+@media only screen and (max-width: 920px) {
+  .bonus__сards {
+    flex-direction: column;
   }
 }
-.form__email {
-  display: block;
-  width: 100%;
-  height: 52px;
-  padding: 0 40px 0 20px;
-  border: 2px solid #e3e3e4;
-  border-radius: 0;
-  background: #fff;
-  color: #727376;
-  text-shadow: none;
-  font-size: 14px;
-  line-height: 1.42857143;
-  margin-bottom: 20px;
+@media only screen and (max-width: 400px) {
+  .card {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    height: 220px;
+    width: 280px;
+    img {
+      width: 60px;
+      height: 60px;
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+  .bonus__purchase {
+    padding: 17px 90px;
+  }
 }
-.form__button {
-  color: white;
-  cursor: pointer;
-  background-color: #7db945;
-  font-size: 22px;
-  padding: 17px 60px;
-  border-radius: 10px;
-  font-family: "Rotonda C";
-  border: none;
+
+@media only screen and (max-width: 320px) {
+  .bonus {
+    padding-top: 30px;
+  }
+  .bonus__сards {
+    margin-bottom: 30px;
+  }
+  .card {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 220px;
+    width: 280px;
+    img {
+      width: 60px;
+      height: 60px;
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+  .card__description {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .card__headings {
+    display: flex;
+  }
+  .card__heading {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  .card-text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .top {
+    margin: 0px;
+  }
+  .green {
+    margin-bottom: 0px;
+  }
+  .plus {
+    height: 83px;
+    padding-top: 20px;
+  }
+
+  .bonus__purchase {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 36px;
+    padding: 17px 80px;
+    margin-bottom: 80px;
+  }
 }
 </style>

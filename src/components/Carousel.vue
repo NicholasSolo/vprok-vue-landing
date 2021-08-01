@@ -53,7 +53,7 @@ export default {
         {
           slideNumber: "1",
           slideImg: step1,
-          slideHeading: "Привезем точно по списку",
+          slideHeading: "Привезём точно по списку",
           slideText:
             "Сборщик берет с собой наручный терминал, на котором он видит весь список покупок для каждого заказа.",
         },
@@ -62,7 +62,7 @@ export default {
           slideImg: step2,
           slideHeading: "Собираем быстро и эффективно",
           slideText:
-            "Для улучшения эргономики пространства товары размещены от тяжелых к легким, находящимся уже в конечной зоне упаковки.",
+            "Для улучшения эргономики пространства товары размещены от тяжёлых к лёгким, находящимся уже в конечной зоне упаковки.",
         },
         {
           slideNumber: "3",
@@ -81,7 +81,7 @@ export default {
         {
           slideNumber: "5",
           slideImg: step5,
-          slideHeading: "Довезем в сохранности даже яйца",
+          slideHeading: "Довезём в сохранности даже яйца",
           slideText:
             "Бережно транспортируем контейнеры, фиксируя их стяжными ремнями. Системы охлаждения поддерживают температурный режим.",
         },
@@ -107,7 +107,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../node_modules/swiper/swiper-bundle.css";
 .carousel {
-  border: 2px solid orange;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -118,22 +117,25 @@ export default {
   font-size: 36px;
   line-height: 46px;
   color: #26303b;
-  width: 500px;
+  max-width: 500px;
   margin-bottom: 30px;
 }
 .slider {
-  width: 640px;
+  max-width: 640px;
+  width: 100%;
   padding: 40px;
-  margin-bottom: 80px;
-
+  margin: 0px 15px 80px;
   background-color: white;
   border-radius: 5px;
 }
 .slide__img {
   margin-bottom: 28px;
+  position: relative;
   img {
-    width: 560px;
-    height: 284px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 284px;
+    height: 100%;
   }
 }
 .slide__number {
@@ -169,6 +171,60 @@ export default {
   top: 55%;
   img {
     cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .slider__arrows {
+    width: 150px;
+    top: 91%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .carousel__heading {
+    font-size: 30px;
+  }
+  .slider {
+    padding: 30px 30px 10px 30px;
+  }
+  .slider__arrows {
+    width: 140px;
+    top: 89%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .carousel__heading {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    max-width: 500px;
+    margin-bottom: 33px;
+  }
+  .slide__description {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .slider {
+    max-width: 280px;
+    width: 100%;
+    padding: 20px 20px 16px 20px;
+    margin: 0px 20px 112px;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .slide__img {
+    margin-bottom: 20px;
+    position: relative;
+    img {
+      max-width: 240px;
+      width: 240px;
+      max-height: 160px;
+      height: 160px;
+    }
+  }
+  .slider__arrows {
+    width: 140px;
+    top: 86%;
   }
 }
 </style>

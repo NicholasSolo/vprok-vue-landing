@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Advantages from "@/components/Advantages.vue";
-import Carousel from "@/components/Carousel.vue";
-import Bonus from "@/components/Bonus.vue";
+import Advantages from "./Advantages.vue";
+import Carousel from "./Carousel.vue";
+import Bonus from "./Bonus.vue";
 
 export default {
   name: "ContentSection",

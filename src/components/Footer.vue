@@ -9,7 +9,7 @@
           <div class="city-name">Москва</div>
           <div class="phone-number">+7 495 797-57-77</div>
         </div>
-        <div class="city">
+        <div class="city no-mr">
           <div class="city-name">Санкт-Петербург</div>
           <div class="phone-number">+7 812 385-99-55</div>
         </div>
@@ -29,7 +29,7 @@
           <img src="../assets/img/insta.svg" alt="insta" class="social-logo" />
         </a>
         <a href="#">
-          <img src="../assets/img/ok.svg" alt="ok" class="social-logo" />
+          <img src="../assets/img/ok.svg" alt="ok" class="social-logo no-mr" />
         </a>
       </div>
     </div>
@@ -44,8 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  border: 2px solid chartreuse;
-  padding: 47px 262px 0px;
+  padding: 47px 262px 107px;
   background-color: #043e44;
   display: flex;
   flex-direction: column;
@@ -59,12 +58,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 107px;
+  width: 100%;
 }
 .phones {
   display: flex;
   text-align: left;
-  margin-right: 245px;
 }
 .city {
   margin-right: 40px;
@@ -85,5 +83,59 @@ export default {
 }
 .social-logo {
   margin-right: 40px;
+}
+.no-mr {
+  margin-right: 0px;
+}
+
+@media only screen and (max-width: 1366px) {
+  .footer {
+    padding: 47px 150px 107px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .footer {
+    padding: 47px 100px 107px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .footer {
+    padding: 47px 54px 107px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer-contact {
+    flex-direction: column;
+    align-items: start;
+  }
+  .phones {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .footer {
+    padding: 47px 44px 35px;
+  }
+  .phones {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .footer {
+    padding: 46px 46px 77px 46px;
+  }
+  .footer__logo {
+    margin-bottom: 15px;
+    img {
+      width: 131px;
+      height: 37px;
+    }
+  }
+  .footer-contact {
+    flex-direction: column;
+  }
+  .phones {
+    margin-bottom: 15px;
+  }
 }
 </style>

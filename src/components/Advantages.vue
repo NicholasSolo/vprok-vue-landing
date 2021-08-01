@@ -68,12 +68,14 @@ export default {
     };
   },
   mounted() {
-    const headings = document.querySelectorAll(".tile__heading");
+    const tileHeadings = document.querySelectorAll(".tile__heading");
 
     if (document.documentElement.clientWidth === 320) {
-      [...headings][1].style.marginBottom = "15px";
+      [...tileHeadings][1].style.marginBottom = "15px";
+    } else if (document.documentElement.clientWidth > 320 && document.documentElement.clientWidth <= 650) {
+      [...tileHeadings][1].style.marginBottom = "40px";
     } else {
-      [...headings][1].style.marginBottom = "55px";
+      [...tileHeadings][1].style.marginBottom = "55px";
     }
   },
 };

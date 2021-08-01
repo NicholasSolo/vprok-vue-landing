@@ -147,6 +147,15 @@ export default {
     display: none;
   }
 }
+@media only screen and (max-width: 420px) {
+  .header__title {
+    font-size: 29px;
+  }
+  .header__description {
+    max-width: 240px;
+    font-size: 18px;
+  }
+}
 @media only screen and (max-width: 320px) {
   .header {
     padding: 40px 25px 53px 25px;

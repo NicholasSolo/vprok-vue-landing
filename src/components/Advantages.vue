@@ -67,16 +67,25 @@ export default {
       ],
     };
   },
-  mounted() {
-    const tileHeadings = document.querySelectorAll(".tile__heading");
+  methods: {
+    resizeHandler() {
+      const tileHeadings = document.querySelectorAll(".tile__heading");
 
-    if (document.documentElement.clientWidth === 320) {
-      [...tileHeadings][1].style.marginBottom = "15px";
-    } else if (document.documentElement.clientWidth > 320 && document.documentElement.clientWidth <= 650) {
-      [...tileHeadings][1].style.marginBottom = "40px";
-    } else {
-      [...tileHeadings][1].style.marginBottom = "55px";
-    }
+      if (document.documentElement.clientWidth === 320) {
+        [...tileHeadings][1].style.marginBottom = "15px";
+      } else if (
+        document.documentElement.clientWidth > 320 &&
+        document.documentElement.clientWidth <= 650
+      ) {
+        [...tileHeadings][1].style.marginBottom = "40px";
+      } else {
+        [...tileHeadings][1].style.marginBottom = "55px";
+      }
+    },
+  },
+  mounted() {
+    this.resizeHandler();
+    window.addEventListener("resize", this.resizeHandler);
   },
 };
 </script>

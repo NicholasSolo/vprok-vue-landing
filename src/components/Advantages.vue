@@ -71,7 +71,7 @@ export default {
     resizeHandler() {
       const tileHeadings = document.querySelectorAll(".tile__heading");
 
-      if (document.documentElement.clientWidth === 320) {
+      if (document.documentElement.clientWidth <= 320) {
         [...tileHeadings][1].style.marginBottom = "15px";
       } else if (
         document.documentElement.clientWidth > 320 &&

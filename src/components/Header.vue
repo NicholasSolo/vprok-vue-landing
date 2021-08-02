@@ -162,9 +162,9 @@ export default {
     margin-bottom: 40px;
     text-align: center;
     -webkit-clip-path: ellipse(156% 75% at 50% 25%);
-    clip-path: ellipse(156% 75% at 50% 25%);
+    clip-path: ellipse(156% 70% at 50% 25%);
     background-size: 309%;
-    background-position: 42% 57%;
+    background-position: 42% 0%;
   }
   .header__wrapper {
     margin: 0px;
